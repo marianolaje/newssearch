@@ -28,7 +28,7 @@ function App() {
       setNoticias(noticias.articles)
     }
     consultarAPI()
-  }, [categoria, pais])
+  }, [categoria, paisDefault])
 
   return (
     <Fragment>

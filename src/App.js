@@ -7,17 +7,28 @@ function App() {
 
   //definir la categoria y noticias
   const [categoria, setCategoria] = useState('')
+  const [pais, setPais] = useState('')
   const [noticias, setNoticias] = useState([])
+
+  let paisDefault = ''
+  const cambioPais = () => {
+    if(pais === ''){
+      paisDefault = 'us'
+    } else {
+      paisDefault = pais
+    }
+  }
+  cambioPais()
 
   useEffect(()=>{
     const consultarAPI = async () => {
-      const url = `http://newsapi.org/v2/top-headlines?country=us&category=${categoria}&apiKey=c8baf4284313415591f537112d57ecb4`
+      const url = `http://newsapi.org/v2/top-headlines?country=${paisDefault}&category=${categoria}&apiKey=c8baf4284313415591f537112d57ecb4`
       const respuesta = await fetch(url);
       const noticias = await respuesta.json();
       setNoticias(noticias.articles)
     }
     consultarAPI()
-  }, [categoria])
+  }, [categoria, pais])
 
   return (
     <Fragment>
@@ -27,6 +38,7 @@ function App() {
       <div className="container white">
         <Formulario
           setCategoria={setCategoria}
+          setPais={setPais}
         />
         <ListadoNoticia
           noticias={noticias}

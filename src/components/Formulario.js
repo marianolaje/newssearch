@@ -73,7 +73,7 @@ const Formulario = ({setCategoria, setPais}) => {
     ]
     //utilizar CustomHooks
     const [categoria, SelectNoticias] = useSelect('general', OPCIONES)
-    const [pais, SelectCountry] = useSelect('', COUNTRIES)
+    const [pais, SelectCountry] = useSelect('us', COUNTRIES)
 
     //submit al form, pasar categoría al app.js
     const buscarNoticias = e => {
@@ -90,8 +90,12 @@ const Formulario = ({setCategoria, setPais}) => {
                     onSubmit={buscarNoticias}
                 >
                 <h2 className={styles.heading}>Search news by categories</h2>
-                    <SelectNoticias/>
-                    <SelectCountry/>
+                    <div className="col s12 m9 l9">
+                        <SelectNoticias/>
+                    </div>
+                    <div className="col s12 m3 l3">
+                        <SelectCountry/>
+                    </div>
                     <div className="input-field col s12">
                         <input 
                             type="submit"
@@ -106,7 +110,8 @@ const Formulario = ({setCategoria, setPais}) => {
 }
 
 Formulario.propTypes = {
-    setCategoria: PropTypes.func.isRequired
+    setCategoria: PropTypes.func.isRequired,
+    setPais: PropTypes.func.isRequired
 }
 
 export default Formulario

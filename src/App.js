@@ -4,6 +4,7 @@ import Formulario from './components/Formulario'
 import ListadoNoticia from './components/ListadoNoticia';
 
 function App() {
+  console.log("Developed by Mariano Laje Arrigoni")
 
   //definir la categoria y noticias
   const [categoria, setCategoria] = useState('')

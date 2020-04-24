@@ -22,7 +22,7 @@ function App() {
 
   useEffect(()=>{
     const consultarAPI = async () => {
-      const url = `http://newsapi.org/v2/top-headlines?country=${paisDefault}&category=${categoria}&apiKey=c8baf4284313415591f537112d57ecb4`
+      const url = `https://newsapi.org/v2/top-headlines?country=${paisDefault}&category=${categoria}&apiKey=c8baf4284313415591f537112d57ecb4`
       const respuesta = await fetch(url);
       const noticias = await respuesta.json();
       setNoticias(noticias.articles)
